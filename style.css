@@ -1,0 +1,310 @@
+@font-face {
+    font-family: 'Antonio Medium';
+    src: url('Sources/Fonts/Antonio/Antonio-Medium.ttf') format('truetype')
+}
+
+@font-face {
+    font-family: 'Antonio Regular';
+    src: url('Sources/Fonts/Antonio/Antonio-Regular.ttf') format('truetype')
+}
+
+@font-face {
+    font-family: 'League Spartan Bold';
+    src: url('Sources/Fonts/League_Spartan/LeagueSpartan-Bold.ttf') format('truetype')
+}
+
+@font-face {
+    font-family: 'League Spartan ExtraLight';
+    src: url('Sources/Fonts/League_Spartan/LeagueSpartan-ExtraLight.ttf') format('truetype')
+}
+
+@font-face {
+    font-family: 'League Spartan Regular';
+    src: url('Sources/Fonts/League_Spartan/LeagueSpartan-Regular.ttf') format('truetype')
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main,
+header {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+body{
+    background-color: #070724;
+    background-image: url("Sources/Images/background-stars.svg");
+}
+
+header{
+    display: flex;
+    background-color: #070724;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.title-menu{
+    color: #FFFFFF;
+    font-family: "Antonio Medium", "Arial";
+    letter-spacing: -0.065625rem;
+    font-size: 1.75rem;
+}
+
+.hamburger-button{
+    background-color: transparent;
+    border-color: transparent;
+    cursor: pointer;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.hamburger-button.show{
+    opacity: 0.25;
+}
+
+.menu-items{
+    position: absolute;
+    display: none;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    list-style-type: none;
+    background-color: #070724;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    transform: translate(100%, 0);
+    transition: transform 0.4s ease-in-out;
+    z-index: 1;
+}
+
+.menu-items.show{
+    transform: translate(0, 0);
+}
+
+.menu-items.appear {
+    display: block;
+}
+
+.menu-item button{
+    text-decoration: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 0;
+    background-color: #070724;
+    border-color: transparent;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    transition: background-color 0.2s linear;
+    cursor: pointer;
+}
+
+.menu-item:hover button{
+    background-color: rgb(216,216,216,0.2);
+}
+
+.menu-planet-container{
+    display: flex;
+    align-items: center;
+}
+
+.menu-planet-name{
+    color: #FFFFFF;
+    font-family: "League Spartan Bold", "Arial";
+    font-size: 0.9375rem;
+    letter-spacing: 0.085rem;
+    padding-left: 1.5625rem;
+    text-transform: uppercase;
+}
+
+.planet-info-menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+
+}
+
+.overview,
+.structure,
+.surface {
+    color: rgba(255,255,255,0.5);
+    display: inline-block;
+    position: relative;
+    background-color: transparent;
+    border-color: transparent;
+    cursor: pointer;
+    font-family: "League Spartan Regular", "Arial";
+    text-underline-offset: 1.25rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.120625rem;
+    padding: 1.25rem 0;
+    transition: color 0.25s ease-in-out;
+}
+
+.overview.active,
+.structure.active,
+.surface.active {
+    color: rgba(255,255,255,1);
+}
+
+.overview::after,
+.structure::after,
+.surface::after {
+    content: '';
+    position: absolute;
+    transform: scaleX(0);
+    height: 4px;
+    right:0;
+    top:100%;
+    left: 0;
+    background-color: var(--after-bg-color);
+    transition: transform 0.25s ease-out;
+  }
+
+  .overview:hover::after,
+  .structure:hover::after,
+  .surface:hover::after,
+  .overview:focus::after,
+  .structure:focus::after,
+  .surface:focus::after {
+    transform: scaleX(1);
+  }
+
+  .overview:focus-visible,
+  .structure:focus-visible,
+  .surface:focus-visible {
+    outline: none;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+  }
+
+  .planet-image {
+    align-self: center;
+    transition: opacity 0.3s linear;
+  }
+
+  .planet-image svg{
+    transform: scale(0.384);
+  }
+
+  .planet-info{
+    padding: 0 2rem;
+  }
+
+  .planet-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  h1{
+    color: white;
+    font-family: "Antonio Medium", "Arial";
+    font-weight: unset;
+    font-size: 2.5rem;
+    padding-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  .planet-info-text {
+    color:white;
+    font-family: 'League Spartan ExtraLight', "Arial";
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .planet-name,
+  .planet-info-text,
+  #rotation,
+  #revolution,
+  #radius,
+  #temperature{
+    transition: opacity 0.3s ease-in-out;
+  }
+
+
+  .planet-link{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+  }
+
+  .source-title,
+  .wiki-link {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.75rem;
+  }
+
+  .source-title{
+    font-family: "League Spartan Regular", "Arial";
+  }
+
+  .wiki-link{
+    display: flex;
+    align-items: center;
+    font-family: "League Spartan Bold", "Arial";
+    transition: color 0.3s linear;
+  }
+
+  .wiki-link p {
+    padding: 0 0.25rem;
+  }
+
+  .wiki-link:hover{
+    color: white;
+  }
+
+  .wiki-link:hover > svg *{
+    opacity: 1;
+    transition: opacity 0.3s linear;
+  }
+
+  .spec-name {
+    font-family: "League Spartan Regular", "Arial";
+    letter-spacing: 0.045625rem;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.675rem;
+  }
+
+  .spec-value {
+    font-family: "Antonio Medium", "Arial";
+    letter-spacing: -0.046875rem;
+    color: rgba(255,255,255,1);
+    font-size: 1.25rem;
+    text-transform: uppercase;
+  }
+
+  .planet-specs{
+    display: grid;
+    gap: 0.5rem;
+    padding: 0 1.5rem;
+  }
+
+  .planet-spec{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 0.5rem 1.5rem;
+  }
+
+
+
