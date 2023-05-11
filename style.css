@@ -38,12 +38,12 @@ header {
     margin: 0 auto;
 }
 
-body{
+body {
     background-color: #070724;
     background-image: url("Sources/Images/background-stars.svg");
 }
 
-header{
+header {
     display: flex;
     background-color: #070724;
     justify-content: space-between;
@@ -53,25 +53,25 @@ header{
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-.title-menu{
+.title-menu {
     color: #FFFFFF;
     font-family: "Antonio Medium", "Arial";
     letter-spacing: -0.065625rem;
     font-size: 1.75rem;
 }
 
-.hamburger-button{
+.hamburger-button {
     background-color: transparent;
     border-color: transparent;
     cursor: pointer;
     transition: opacity 0.2s ease-in-out;
 }
 
-.hamburger-button.show{
+.hamburger-button.show {
     opacity: 0.25;
 }
 
-.menu-items{
+.menu-items {
     position: absolute;
     display: none;
     top: 100%;
@@ -86,7 +86,7 @@ header{
     z-index: 1;
 }
 
-.menu-items.show{
+.menu-items.show {
     transform: translate(0, 0);
 }
 
@@ -94,7 +94,7 @@ header{
     display: block;
 }
 
-.menu-item button{
+.menu-item button {
     text-decoration: none;
     width: 100%;
     display: flex;
@@ -108,16 +108,16 @@ header{
     cursor: pointer;
 }
 
-.menu-item:hover button{
+.menu-item:hover button {
     background-color: rgb(216,216,216,0.2);
 }
 
-.menu-planet-container{
+.menu-planet-container {
     display: flex;
     align-items: center;
 }
 
-.menu-planet-name{
+.menu-planet-name {
     color: #FFFFFF;
     font-family: "League Spartan Bold", "Arial";
     font-size: 0.9375rem;
@@ -126,7 +126,7 @@ header{
     text-transform: uppercase;
 }
 
-.planet-info-menu{
+.planet-info-menu {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -193,29 +193,36 @@ header{
   }
 
   .planet-image {
+    position: relative;
     align-self: center;
     transition: opacity 0.3s linear;
     padding: 6rem 8.25rem;
   }
 
-  .planet-image svg{
+  .planet-image svg {
     max-width: 100%;
     height: auto;
   }
 
-  .planet-info{
-    padding: 0 2rem;
+  .planet-surface {
+    position: absolute;
+    top: 60%;
+    left: 42.5%;
+    max-width: 15%;
+    height: auto;
+    transition: opacity 0.3s ease-in-out;
   }
 
-  .planet-info{
+  .planet-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 0 2rem;
   }
 
-  h1{
+  h1 {
     color: white;
     font-family: "Antonio Medium", "Arial";
     font-weight: unset;
@@ -236,12 +243,12 @@ header{
   #rotation,
   #revolution,
   #radius,
-  #temperature{
+  #temperature {
     transition: opacity 0.3s ease-in-out;
   }
 
 
-  .planet-link{
+  .planet-link {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -255,7 +262,7 @@ header{
     font-size: 0.75rem;
   }
 
-  .source-title{
+  .source-title {
     font-family: "League Spartan Regular", "Arial";
   }
 
@@ -270,11 +277,11 @@ header{
     padding: 0 0.25rem;
   }
 
-  .wiki-link:hover{
+  .wiki-link:hover {
     color: white;
   }
 
-  .wiki-link:hover > svg *{
+  .wiki-link:hover > svg * {
     opacity: 1;
     transition: opacity 0.3s linear;
   }
@@ -294,13 +301,13 @@ header{
     text-transform: uppercase;
   }
 
-  .planet-specs{
+  .planet-specs {
     display: grid;
     gap: 0.5rem;
     padding: 0 1.5rem;
   }
 
-  .planet-spec{
+  .planet-spec {
     display: flex;
     justify-content: space-between;
     align-items: center;

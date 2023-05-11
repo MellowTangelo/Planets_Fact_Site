@@ -91,6 +91,7 @@ fetchData().then(data =>{
     const imageContainer = document.querySelector('.planet-image');
     const wikiLink = document.querySelector(".wiki-link");
 
+
     overviewButton.addEventListener("click", () => {
         switchView(0);
     });
@@ -101,13 +102,18 @@ fetchData().then(data =>{
         switchView(2);
     });
 
-    function changeSVG(svgPath){
+    function changeSVG(svgPath, planetSurfaceSrcFile, isSurface){
         var xhr = new XMLHttpRequest();
         xhr.open('GET', svgPath, true);
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var svgContent = xhr.responseText;
-                imageContainer.innerHTML = svgContent;
+                var planetSurface = '';
+                if(isSurface) {
+                    planetSurface = `<img class="planet-surface" alt="Surface of a planet" src=${planetSurfaceSrcFile}>`;
+                }
+                
+                imageContainer.innerHTML = svgContent + planetSurface;
             }
         };
         xhr.send();
@@ -123,7 +129,7 @@ fetchData().then(data =>{
             imageContainer.style.opacity = 0;
 
             setTimeout(function() {
-                changeSVG(data[currentPlanetIndex].images.planet);
+                changeSVG(data[currentPlanetIndex].images.planet, data[currentPlanetIndex].images.geology, false);
                 planetInfo.textContent = data[currentPlanetIndex].overview.content;
                 wikiLink.href = data[currentPlanetIndex].overview.source;
                 planetInfo.style.opacity = 1;
@@ -139,7 +145,7 @@ fetchData().then(data =>{
             imageContainer.style.opacity = 0;
 
             setTimeout(function() {
-                changeSVG(data[currentPlanetIndex].images.internal);
+                changeSVG(data[currentPlanetIndex].images.internal, data[currentPlanetIndex].images.geology, false);
                 planetInfo.textContent = data[currentPlanetIndex].structure.content;
                 wikiLink.href = data[currentPlanetIndex].structure.source;
                 planetInfo.style.opacity = 1;
@@ -155,7 +161,7 @@ fetchData().then(data =>{
             imageContainer.style.opacity = 0;
 
             setTimeout(function() {
-                changeSVG(data[currentPlanetIndex].images.planet);
+                changeSVG(data[currentPlanetIndex].images.planet, data[currentPlanetIndex].images.geology, true);
                 planetInfo.textContent = data[currentPlanetIndex].geology.content;
                 wikiLink.href = data[currentPlanetIndex].geology.source;
                 planetInfo.style.opacity = 1;
@@ -210,17 +216,17 @@ fetchData().then(data =>{
             if(overviewButton.classList.contains('active')){
                 planetInfo.textContent = data[index].overview.content;
                 wikiLink.href = data[currentPlanetIndex].overview.source;
-                changeSVG(data[currentPlanetIndex].images.planet);
+                changeSVG(data[currentPlanetIndex].images.planet, data[currentPlanetIndex].images.geology, false);
             }
             else if(structureButton.classList.contains('active')){
                 planetInfo.textContent = data[index].structure.content;
                 wikiLink.href = data[currentPlanetIndex].structure.source;
-                changeSVG(data[currentPlanetIndex].images.internal);
+                changeSVG(data[currentPlanetIndex].images.internal, data[currentPlanetIndex].images.geology, false);
             }
             else if(surfaceButton.classList.contains('active')){
                 planetInfo.textContent = data[index].geology.content;
                 wikiLink.href = data[currentPlanetIndex].geology.source;
-                changeSVG(data[currentPlanetIndex].images.planet);
+                changeSVG(data[currentPlanetIndex].images.planet, data[currentPlanetIndex].images.geology, true);
             }
 
             planetName.style.opacity = 1;
