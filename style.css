@@ -34,6 +34,7 @@
 main,
 header {
     max-width: 1440px;
+    overflow-x: clip;
     margin: 0 auto;
 }
 
@@ -131,7 +132,6 @@ header{
     align-items: center;
     padding: 0 1.5rem;
     border-bottom: 1px solid rgba(255,255,255,0.1);
-
 }
 
 .overview,
@@ -195,10 +195,12 @@ header{
   .planet-image {
     align-self: center;
     transition: opacity 0.3s linear;
+    padding: 6rem 8.25rem;
   }
 
   .planet-image svg{
-    transform: scale(0.384);
+    max-width: 100%;
+    height: auto;
   }
 
   .planet-info{
