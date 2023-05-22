@@ -91,7 +91,6 @@ fetchData().then(data =>{
     const imageContainer = document.querySelector('.planet-image');
     const wikiLink = document.querySelector(".wiki-link");
 
-
     overviewButton.addEventListener("click", () => {
         switchView(0);
     });
@@ -191,53 +190,80 @@ fetchData().then(data =>{
         button.addEventListener("click", () => {
             switchPlanetInfo(index);
         });
+        button.style.setProperty("--after-bg-color", afterColor[index]);
     });
 
     function switchPlanetInfo(index){
-        planetName.style.opacity = 0;
-        planetImage.style.opacity = 0;
-        planetRotation.style.opacity = 0;
-        planeteRevolution.style.opacity = 0;
-        planetRadius.style.opacity = 0;
-        planetTemperature.style.opacity = 0;
-        planetInfo.style.opacity = 0;
-        currentPlanetIndex = index;
-        overview.style.setProperty("--after-bg-color", afterColor[index]);
-        structure.style.setProperty("--after-bg-color", afterColor[index]);
-        surface.style.setProperty("--after-bg-color", afterColor[index]);
+        if(currentPlanetIndex !== index){
+            planetName.style.opacity = 0;
+            planetImage.style.opacity = 0;
+            planetRotation.style.opacity = 0;
+            planeteRevolution.style.opacity = 0;
+            planetRadius.style.opacity = 0;
+            planetTemperature.style.opacity = 0;
+            planetInfo.style.opacity = 0;
+            currentPlanetIndex = index;
+            overview.style.setProperty("--after-bg-color", afterColor[index]);
+            structure.style.setProperty("--after-bg-color", afterColor[index]);
+            surface.style.setProperty("--after-bg-color", afterColor[index]);
+    
+            planetButtons.forEach((button, index) => {
+                if(index === currentPlanetIndex){
+                    button.classList.add('active');
+                }
+                else{
+                    button.classList.remove('active');
+                }
+            })
+    
+            setTimeout(function() {
+                planetName.textContent = data[index].name;
+                planetRotation.textContent = data[index].rotation;
+                planeteRevolution.textContent = data[index].revolution;
+                planetRadius.textContent = data[index].radius;
+                planetTemperature.textContent = data[index].temperature;
+    
+                if(overviewButton.classList.contains('active')){
+                    planetInfo.textContent = data[index].overview.content;
+                    wikiLink.href = data[currentPlanetIndex].overview.source;
+                    changeSVG(data[currentPlanetIndex].images.planet, data[currentPlanetIndex].images.geology, false);
+                }
+                else if(structureButton.classList.contains('active')){
+                    planetInfo.textContent = data[index].structure.content;
+                    wikiLink.href = data[currentPlanetIndex].structure.source;
+                    changeSVG(data[currentPlanetIndex].images.internal, data[currentPlanetIndex].images.geology, false);
+                }
+                else if(surfaceButton.classList.contains('active')){
+                    planetInfo.textContent = data[index].geology.content;
+                    wikiLink.href = data[currentPlanetIndex].geology.source;
+                    changeSVG(data[currentPlanetIndex].images.planet, data[currentPlanetIndex].images.geology, true);
+                }
+    
+                planetName.style.opacity = 1;
+                planetImage.style.padding = paddingPlanetImage[index];
+                planetImage.style.opacity = 1;
+                planetRotation.style.opacity = 1;
+                planeteRevolution.style.opacity = 1;
+                planetRadius.style.opacity = 1;
+                planetTemperature.style.opacity = 1;
+                planetInfo.style.opacity = 1;
+                }, 300);
+        }
 
-        setTimeout(function() {
-            planetName.textContent = data[index].name;
-            planetRotation.textContent = data[index].rotation;
-            planeteRevolution.textContent = data[index].revolution;
-            planetRadius.textContent = data[index].radius;
-            planetTemperature.textContent = data[index].temperature;
+    }
 
-            if(overviewButton.classList.contains('active')){
-                planetInfo.textContent = data[index].overview.content;
-                wikiLink.href = data[currentPlanetIndex].overview.source;
-                changeSVG(data[currentPlanetIndex].images.planet, data[currentPlanetIndex].images.geology, false);
-            }
-            else if(structureButton.classList.contains('active')){
-                planetInfo.textContent = data[index].structure.content;
-                wikiLink.href = data[currentPlanetIndex].structure.source;
-                changeSVG(data[currentPlanetIndex].images.internal, data[currentPlanetIndex].images.geology, false);
-            }
-            else if(surfaceButton.classList.contains('active')){
-                planetInfo.textContent = data[index].geology.content;
-                wikiLink.href = data[currentPlanetIndex].geology.source;
-                changeSVG(data[currentPlanetIndex].images.planet, data[currentPlanetIndex].images.geology, true);
-            }
 
-            planetName.style.opacity = 1;
-            planetImage.style.padding = paddingPlanetImage[index];
-            planetImage.style.opacity = 1;
-            planetRotation.style.opacity = 1;
-            planeteRevolution.style.opacity = 1;
-            planetRadius.style.opacity = 1;
-            planetTemperature.style.opacity = 1;
-            planetInfo.style.opacity = 1;
-            }, 300);
+    window.addEventListener("resize", defaultMenuSettings)
+
+    function defaultMenuSettings()
+    {
+        let windowSize = window.innerWidth;
+
+        if (windowSize > 768){
+            menu.classList.remove('appear');
+            menu.classList.remove('show');
+            hamburgerButton.classList.remove('show');
+        }
     }
 
     });

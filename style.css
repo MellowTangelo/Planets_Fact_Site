@@ -94,13 +94,14 @@ header {
     display: block;
 }
 
-.menu-item button {
+.menu-item-button {
     text-decoration: none;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1.25rem 0;
+    color: white;
     background-color: #070724;
     border-color: transparent;
     border-bottom: 1px solid rgba(255,255,255,0.1);
@@ -108,7 +109,7 @@ header {
     cursor: pointer;
 }
 
-.menu-item:hover button {
+.menu-item-button:hover {
     background-color: rgb(216,216,216,0.2);
 }
 
@@ -118,7 +119,6 @@ header {
 }
 
 .menu-planet-name {
-    color: #FFFFFF;
     font-family: "League Spartan Bold", "Arial";
     font-size: 0.9375rem;
     letter-spacing: 0.085rem;
@@ -313,6 +313,110 @@ header {
     align-items: center;
     border: 1px solid rgba(255,255,255,0.2);
     padding: 0.5rem 1.5rem;
+  }
+
+  .planet-info-menu span{
+    display: none;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .hamburger-button {
+      display: none;
+    }
+
+    header {
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem 2rem 0rem;
+    }
+
+    .menu-items {
+      display: flex;
+      position: initial;
+      width: 100%;
+      transform: translate(0, 0);
+      justify-content: space-between;
+      border-top: none;
+      padding: 1rem 0 0;
+    }
+
+    .menu-planet-circle,
+    .menu-item-button svg{
+      display: none;
+    }
+
+    .menu-planet-name {
+      font-family: "League Spartan Regular", "Arial";
+      font-size: 0.6875rem;
+      letter-spacing: 0.0625rem;
+      padding: 0;
+    }
+
+    .menu-item-button {
+      color: rgba(255,255,255,0.75);
+      padding: 1.5rem 0.5rem;
+      position: relative;
+      border-bottom: none;
+      transition: color 0.25s ease-in-out;
+    }
+
+    .menu-item-button:hover {
+      background-color: #070724;
+    }
+
+    .menu-item-button.active {
+      color: rgba(255,255,255,1);
+    }
+
+    .menu-item-button::after {
+      content: '';
+      position: absolute;
+      transform: scaleX(0);
+      height: 4px;
+      right:0;
+      top:100%;
+      left: 0;
+      background-color: var(--after-bg-color);
+      transition: transform 0.25s ease-out;
+    }
+
+    .menu-item-button:hover::after,
+    .menu-item-button:focus::after {
+      transform: scaleX(1);
+    }
+
+    .menu-item-button:focus-visible {
+      outline: none;
+    }
+
+    .planet-specs {
+      display: grid;
+      grid-template: 1fr / 1fr 1fr 1fr 1fr;
+      gap: 0.6875rem;
+    }
+  
+    .planet-spec {
+      display: block;
+      flex-direction: column;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 1rem;
+    }
+
+    .spec-value {
+      padding-top: 0.5rem;
+    }
+
+    .planet-info-menu span{
+      display: initial;
+      padding-right: 1rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .overview,
+    .structure,
+    .surface{
+      color: white;
+    }
   }
 
 
