@@ -128,6 +128,10 @@ header {
 
 .planet-info-menu {
     display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     justify-content: space-between;
     align-items: center;
     padding: 0 1.5rem;
@@ -190,6 +194,7 @@ header {
     display: flex;
     flex-direction: column;
     margin-bottom: 2rem;
+    position: relative;
   }
 
   .planet-image {
@@ -246,7 +251,6 @@ header {
   #temperature {
     transition: opacity 0.3s ease-in-out;
   }
-
 
   .planet-link {
     display: flex;
@@ -315,11 +319,64 @@ header {
     padding: 0.5rem 1.5rem;
   }
 
-  .planet-info-menu span{
+  .planet-info-menu .info-number, 
+  .planet-info-menu .extra-text {
     display: none;
   }
 
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 650px) {
+    .main-content {
+      display: grid;
+      grid-template: 1fr / 1fr  1fr;
+      gap: 1.5rem;
+    }
+
+    .planet-info-menu {
+      position: initial;
+      flex-direction: column;
+      align-items: last baseline;
+      justify-content: space-around;
+      padding: 1.5rem 1.5rem;
+    }
+
+    .overview,
+    .structure,
+    .surface {
+      border: 1px solid rgba(255,255,255,0.2);
+      width: 100%;
+      text-align: left;
+      padding: 1rem 1.25rem;
+      transition: background-color 0.25s ease-in-out;
+    }
+
+    .overview:hover,
+    .structure:hover,
+    .surface:hover,
+    .overview:focus,
+    .structure:focus,
+    .surface:focus {
+      background-color: var(--after-bg-color);
+    }
+
+    .overview::after,
+    .structure::after,
+    .surface::after {
+      display: none;
+    }
+
+    .planet-info {
+      align-items: first baseline;
+    }
+
+    .planet-link {
+      justify-content: left;
+      padding: 2rem;
+    }
+
+    .planet-info-text {
+      text-align: left;
+    }
+
     .hamburger-button {
       display: none;
     }
@@ -406,17 +463,62 @@ header {
       padding-top: 0.5rem;
     }
 
-    .planet-info-menu span{
+    .planet-info-menu .info-number{
       display: initial;
       padding-right: 1rem;
       color: rgba(255,255,255,0.5);
     }
 
+    .planet-info-menu .extra-text {
+      display: initial;
+      padding-right: 0;
+    }
+
     .overview,
     .structure,
-    .surface{
+    .surface {
       color: white;
     }
+  }
+
+  @media only screen and (min-width: 1200px) {
+    .planet-specs {
+      padding: 0;
+      gap: 1rem;
+    }
+
+    main {
+      padding: 0 10rem;
+    }
+
+    .spec-name {
+      font-size: 1rem;
+    }
+
+    .spec-value {
+      font-size: 2.5rem;
+    }
+
+    header {
+      flex-direction: row;
+      padding: 0 2rem;
+      justify-content: space-between;
+    }
+
+    .menu-items {
+      width: initial;
+      gap: 1rem;
+      padding-top: 0;
+    }
+
+    .menu-item-button {
+      border: none;
+    }
+
+    .menu-item-button::after {
+      top: 0;
+    }
+
   }
 
 
