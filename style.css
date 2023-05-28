@@ -77,7 +77,7 @@ header {
     top: 100%;
     left: 0;
     right: 0;
-    padding: 1.5rem;
+    padding: 1.5rem 0;
     list-style-type: none;
     background-color: #070724;
     border-top: 1px solid rgba(255,255,255,0.1);
@@ -100,7 +100,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.25rem 0;
+    padding: 1.25rem 1.5rem;
     color: white;
     background-color: #070724;
     border-color: transparent;
@@ -128,10 +128,6 @@ header {
 
 .planet-info-menu {
     display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
     justify-content: space-between;
     align-items: center;
     padding: 0 1.5rem;
@@ -194,7 +190,6 @@ header {
     display: flex;
     flex-direction: column;
     margin-bottom: 2rem;
-    position: relative;
   }
 
   .planet-image {
@@ -325,16 +320,25 @@ header {
   }
 
   @media only screen and (min-width: 650px) {
-    .main-content {
+    main {
       display: grid;
-      grid-template: 1fr / 1fr  1fr;
-      gap: 1.5rem;
+      grid-template: auto auto auto / 1fr 1fr;
+    }
+
+    .planet-image {
+      grid-column-start: span 2;
+      grid-row-start: 1;
+    }
+
+    .planet-specs {
+      grid-column-start: span 2;
     }
 
     .planet-info-menu {
-      position: initial;
       flex-direction: column;
-      align-items: last baseline;
+      align-items: flex-end;
+      grid-row-start: 2;
+      grid-column-start: 2;
       justify-content: space-around;
       padding: 1.5rem 1.5rem;
     }
@@ -365,7 +369,7 @@ header {
     }
 
     .planet-info {
-      align-items: first baseline;
+      align-items: flex-start;
     }
 
     .planet-link {
@@ -454,7 +458,6 @@ header {
   
     .planet-spec {
       display: block;
-      flex-direction: column;
       border: 1px solid rgba(255,255,255,0.2);
       padding: 1rem;
     }
@@ -482,13 +485,25 @@ header {
   }
 
   @media only screen and (min-width: 1200px) {
+
+
+    .planet-image {
+      grid-row-start: 1;
+      grid-row-end: 3;
+      grid-column-start: 1;
+      grid-column-end:2;
+    }
+
+
     .planet-specs {
       padding: 0;
       gap: 1rem;
+      padding-top: 3rem;
     }
 
     main {
-      padding: 0 10rem;
+      grid-template: auto auto auto / 3fr 1fr;
+      padding: 8rem 10rem 0;
     }
 
     .spec-name {
@@ -519,6 +534,9 @@ header {
       top: 0;
     }
 
+    .planet-name {
+      font-size: 5rem;
+    }
   }
 
 

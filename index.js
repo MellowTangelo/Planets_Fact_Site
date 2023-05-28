@@ -1,3 +1,7 @@
+/**
+* Returns data from JSON file.
+* @return {[object]} Data from JSON file.
+*/
 async function fetchData() {
     try {
       const response = await fetch('./Sources/data.json');
@@ -25,8 +29,9 @@ fetchData().then(data =>{
         </li>`);
     });
 
-    let currentPlanetIndex = 0;
+    /*Define constants and initialize variables*/
 
+    let currentPlanetIndex = 0;
     const circleColor = [
         '#DEF4FC',
         '#F7CC7F',
@@ -37,7 +42,6 @@ fetchData().then(data =>{
         '#65F0D5',
         '#497EFA',
     ];
-
     const afterColor = [
         '#419EBB',
         '#EDA249',
@@ -48,7 +52,6 @@ fetchData().then(data =>{
         '#1EC1A2',
         '#2D68F0',
     ];
-
     const paddingPlanetImage = [
         '6rem 8.25rem',
         '4.625rem 6.875rem',
@@ -59,17 +62,58 @@ fetchData().then(data =>{
         '4rem 6.25rem',
         '4rem 6.25rem',
     ];
-
     const planetColorCircles = document.querySelectorAll(".menu-planet-circle");
+    const hamburgerButton = document.querySelector(".hamburger-button");
+    const overviewButton = document.querySelector(".overview");
+    const structureButton = document.querySelector(".structure");
+    const surfaceButton = document.querySelector(".surface");
+    const planetInfo = document.querySelector(".planet-info-text");
+    const imageContainer = document.querySelector('.planet-image');
+    const wikiLink = document.querySelector(".wiki-link");
+    const planetButtons = document.querySelectorAll(".menu-item-button");
+    const planetName = document.querySelector(".planet-name");
+    const planetImage = document.querySelector(".planet-image");
+    const planetRotation = document.querySelector("#rotation");
+    const planeteRevolution = document.querySelector("#revolution");
+    const planetRadius = document.querySelector("#radius");
+    const planetTemperature = document.querySelector("#temperature");
+
+    overviewButton.classList.add('active');
+    overviewButton.style.setProperty("--after-bg-color", afterColor[0]);
+    structureButton.style.setProperty("--after-bg-color", afterColor[0]);
+    surfaceButton.style.setProperty("--after-bg-color", afterColor[0]);
     for (let i=0; i < planetColorCircles.length; i++){
         planetColorCircles[i].style.fill = circleColor[i];
-
     }
 
-    const hamburgerButton = document.querySelector(".hamburger-button");
+    /* Register event listeners */
+
+    overviewButton.addEventListener("click", () => {
+        switchView(0);
+    });
+    structureButton.addEventListener("click", () => {
+        switchView(1);
+    });
+    surfaceButton.addEventListener("click", () => {
+        switchView(2);
+    });
 
     hamburgerButton.addEventListener("click", toggleMenu);
 
+    window.addEventListener("resize", defaultMenuSettings);
+
+    planetButtons.forEach((button, index) => {
+        button.addEventListener("click", () => {
+            switchPlanetInfo(index);
+        });
+        button.style.setProperty("--after-bg-color", afterColor[index]);
+    });
+
+    /*Define helper functions*/
+
+    /**
+    * Toggles menu in navigation bar while in mobile layout.
+    */
     function toggleMenu() {
         hamburgerButton.classList.toggle('show');
         if(menu.classList.contains('show')) {
@@ -82,25 +126,12 @@ fetchData().then(data =>{
         }
     }
 
-    const overviewButton = document.querySelector(".overview");
-    overviewButton.classList.add('active');
-    const structureButton = document.querySelector(".structure");
-    const surfaceButton = document.querySelector(".surface");
-
-    const planetInfo = document.querySelector(".planet-info-text");
-    const imageContainer = document.querySelector('.planet-image');
-    const wikiLink = document.querySelector(".wiki-link");
-
-    overviewButton.addEventListener("click", () => {
-        switchView(0);
-    });
-    structureButton.addEventListener("click", () => {
-        switchView(1);
-    });
-    surfaceButton.addEventListener("click", () => {
-        switchView(2);
-    });
-
+    /**
+    * Changes active SVG representing a drawing of a planet.
+    * @param  {[string]} svgPath Path to SVG file.
+    * @param  {[string]} planetSurfaceSrcFile Path to PNG file of planet's surface.
+    * @param {[boolean]} isSurface Flag that checks if user clicked on surface button.
+    */
     function changeSVG(svgPath, planetSurfaceSrcFile, isSurface){
         var xhr = new XMLHttpRequest();
         xhr.open('GET', svgPath, true);
@@ -118,8 +149,13 @@ fetchData().then(data =>{
         xhr.send();
     }
 
+
+    /**
+    * Switches view depending on buttons: Overview, (Internal) Structure, Surface (Geology).
+    * @param  {[number]} index 0 -> Overview,, 1 -> (Internal) Structure, 2 -> Surface (Geology).
+    */
     function switchView(index) {
-        if(index === 0 && !overviewButton.classList.contains('active')){
+        if(index === 0 && !overviewButton.classList.contains('active')) {
             overviewButton.classList.add('active');
             structureButton.classList.remove('active');
             surfaceButton.classList.remove('active');
@@ -135,7 +171,7 @@ fetchData().then(data =>{
                 imageContainer.style.opacity = 1;
                 }, 300);
         }
-        else if(index === 1 && !structureButton.classList.contains('active')){
+        else if(index === 1 && !structureButton.classList.contains('active')) {
             overviewButton.classList.remove('active');
             structureButton.classList.add('active');
             surfaceButton.classList.remove('active');
@@ -151,7 +187,7 @@ fetchData().then(data =>{
                 imageContainer.style.opacity = 1;
                 }, 300);
         }
-        else if(index === 2 && !surfaceButton.classList.contains('active')){
+        else if(index === 2 && !surfaceButton.classList.contains('active')) {
             overviewButton.classList.remove('active');
             structureButton.classList.remove('active');
             surfaceButton.classList.add('active');
@@ -169,32 +205,12 @@ fetchData().then(data =>{
         }
     }
 
-    const planetButtons = document.querySelectorAll(".menu-item-button");
-    const planetName = document.querySelector(".planet-name");
-    const planetImage = document.querySelector(".planet-image");
-    const planetRotation = document.querySelector("#rotation");
-    const planeteRevolution = document.querySelector("#revolution");
-    const planetRadius = document.querySelector("#radius");
-    const planetTemperature = document.querySelector("#temperature");
-
-    const overview = document.querySelector(".overview");
-    overview.style.setProperty("--after-bg-color", afterColor[0]);
-
-    const structure = document.querySelector(".structure");
-    structure.style.setProperty("--after-bg-color", afterColor[0]);
-
-    const surface = document.querySelector(".surface");
-    surface.style.setProperty("--after-bg-color", afterColor[0]);
-
-    planetButtons.forEach((button, index) => {
-        button.addEventListener("click", () => {
-            switchPlanetInfo(index);
-        });
-        button.style.setProperty("--after-bg-color", afterColor[index]);
-    });
-
+    /**
+    * Switches planet depending on buttons in the navigation bar (see "menu-items" in html file).
+    * @param  {[number]} index Each index represents a planet starting from the Mercury.
+    */
     function switchPlanetInfo(index){
-        if(currentPlanetIndex !== index){
+        if(currentPlanetIndex !== index) {
             planetName.style.opacity = 0;
             planetImage.style.opacity = 0;
             planetRotation.style.opacity = 0;
@@ -203,15 +219,15 @@ fetchData().then(data =>{
             planetTemperature.style.opacity = 0;
             planetInfo.style.opacity = 0;
             currentPlanetIndex = index;
-            overview.style.setProperty("--after-bg-color", afterColor[index]);
-            structure.style.setProperty("--after-bg-color", afterColor[index]);
-            surface.style.setProperty("--after-bg-color", afterColor[index]);
+            overviewButton.style.setProperty("--after-bg-color", afterColor[index]);
+            structureButton.style.setProperty("--after-bg-color", afterColor[index]);
+            surfaceButton.style.setProperty("--after-bg-color", afterColor[index]);
     
             planetButtons.forEach((button, index) => {
-                if(index === currentPlanetIndex){
+                if(index === currentPlanetIndex) {
                     button.classList.add('active');
                 }
-                else{
+                else {
                     button.classList.remove('active');
                 }
             })
@@ -223,17 +239,17 @@ fetchData().then(data =>{
                 planetRadius.textContent = data[index].radius;
                 planetTemperature.textContent = data[index].temperature;
     
-                if(overviewButton.classList.contains('active')){
+                if(overviewButton.classList.contains('active')) {
                     planetInfo.textContent = data[index].overview.content;
                     wikiLink.href = data[currentPlanetIndex].overview.source;
                     changeSVG(data[currentPlanetIndex].images.planet, data[currentPlanetIndex].images.geology, false);
                 }
-                else if(structureButton.classList.contains('active')){
+                else if(structureButton.classList.contains('active')) {
                     planetInfo.textContent = data[index].structure.content;
                     wikiLink.href = data[currentPlanetIndex].structure.source;
                     changeSVG(data[currentPlanetIndex].images.internal, data[currentPlanetIndex].images.geology, false);
                 }
-                else if(surfaceButton.classList.contains('active')){
+                else if(surfaceButton.classList.contains('active')) {
                     planetInfo.textContent = data[index].geology.content;
                     wikiLink.href = data[currentPlanetIndex].geology.source;
                     changeSVG(data[currentPlanetIndex].images.planet, data[currentPlanetIndex].images.geology, true);
@@ -250,16 +266,19 @@ fetchData().then(data =>{
                 }, 300);
         }
 
+        if (window.innerWidth < 650) {
+            toggleMenu();
+        }
     }
 
-
-    window.addEventListener("resize", defaultMenuSettings)
-
+    /**
+    * Reinitializes menu in navigation bar, if user exits mobile layout by widening the screen.
+    */
     function defaultMenuSettings()
     {
         let windowSize = window.innerWidth;
 
-        if (windowSize > 768){
+        if (windowSize > 650) {
             menu.classList.remove('appear');
             menu.classList.remove('show');
             hamburgerButton.classList.remove('show');
@@ -268,6 +287,3 @@ fetchData().then(data =>{
 
     });
     
-
-
-
