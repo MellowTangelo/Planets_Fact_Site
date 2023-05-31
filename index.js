@@ -140,7 +140,7 @@ fetchData().then(data =>{
                 var svgContent = xhr.responseText;
                 var planetSurface = '';
                 if(isSurface) {
-                    planetSurface = `<img class="planet-surface" alt="Surface of a planet" src=${planetSurfaceSrcFile}>`;
+                    planetSurface = `<img width="75" class="planet-surface" alt="Surface of a planet" src=${planetSurfaceSrcFile}>`;
                 }
                 
                 imageContainer.innerHTML = svgContent + planetSurface;
@@ -256,7 +256,7 @@ fetchData().then(data =>{
                 }
     
                 planetName.style.opacity = 1;
-                planetImage.style.padding = paddingPlanetImage[index];
+                /*planetImage.style.padding = paddingPlanetImage[index];*/
                 planetImage.style.opacity = 1;
                 planetRotation.style.opacity = 1;
                 planeteRevolution.style.opacity = 1;

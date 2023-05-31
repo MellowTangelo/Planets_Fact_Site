@@ -193,23 +193,22 @@ header {
   }
 
   .planet-image {
+    display: flex;
     position: relative;
+    align-items: center;
+    justify-content: center;
     align-self: center;
     transition: opacity 0.3s linear;
-    padding: 6rem 8.25rem;
+    height: 300px;
   }
 
   .planet-image svg {
-    max-width: 100%;
-    height: auto;
+    transform: scale(0.385);
   }
 
   .planet-surface {
     position: absolute;
     top: 60%;
-    left: 42.5%;
-    max-width: 15%;
-    height: auto;
     transition: opacity 0.3s ease-in-out;
   }
 
@@ -314,7 +313,7 @@ header {
     padding: 0.5rem 1.5rem;
   }
 
-  .planet-info-menu .info-number, 
+  .planet-info-menu .info-number,
   .planet-info-menu .extra-text {
     display: none;
   }
@@ -455,7 +454,7 @@ header {
       grid-template: 1fr / 1fr 1fr 1fr 1fr;
       gap: 0.6875rem;
     }
-  
+
     .planet-spec {
       display: block;
       border: 1px solid rgba(255,255,255,0.2);
@@ -482,10 +481,24 @@ header {
     .surface {
       color: white;
     }
+
+    .planet-image {
+      height: 460px;
+    }
+  
+    .planet-image svg {
+      transform: scale(0.634);
+    }
   }
 
-  @media only screen and (min-width: 1200px) {
-
+  @media only screen and (min-width: 1300px) {
+    .planet-image {
+      height: 754px;
+    }
+  
+    .planet-image svg {
+      transform: scale(1);
+    }
 
     .planet-image {
       grid-row-start: 1;
@@ -494,16 +507,14 @@ header {
       grid-column-end:2;
     }
 
-
     .planet-specs {
       padding: 0;
       gap: 1rem;
-      padding-top: 3rem;
     }
 
     main {
-      grid-template: auto auto auto / 3fr 1fr;
-      padding: 8rem 10rem 0;
+      grid-template: auto auto auto / 2fr 1fr;
+      padding: 0 10rem;
     }
 
     .spec-name {
@@ -536,6 +547,18 @@ header {
 
     .planet-name {
       font-size: 5rem;
+    }
+
+    .planet-info-menu {
+      border-bottom: none;
+      justify-content: flex-start;
+      gap: 1rem;
+    }
+
+    .planet-info-container{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
     }
   }
 
