@@ -1,566 +1,566 @@
 @font-face {
-    font-family: 'Antonio Medium';
-    src: url('Sources/Fonts/Antonio/Antonio-Medium.ttf') format('truetype')
+  font-family: "Antonio Medium";
+  src: url("Sources/Fonts/Antonio/Antonio-Medium.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: 'Antonio Regular';
-    src: url('Sources/Fonts/Antonio/Antonio-Regular.ttf') format('truetype')
+  font-family: "Antonio Regular";
+  src: url("Sources/Fonts/Antonio/Antonio-Regular.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: 'League Spartan Bold';
-    src: url('Sources/Fonts/League_Spartan/LeagueSpartan-Bold.ttf') format('truetype')
+  font-family: "League Spartan Bold";
+  src: url("Sources/Fonts/League_Spartan/LeagueSpartan-Bold.ttf")
+    format("truetype");
 }
 
 @font-face {
-    font-family: 'League Spartan ExtraLight';
-    src: url('Sources/Fonts/League_Spartan/LeagueSpartan-ExtraLight.ttf') format('truetype')
+  font-family: "League Spartan ExtraLight";
+  src: url("Sources/Fonts/League_Spartan/LeagueSpartan-ExtraLight.ttf")
+    format("truetype");
 }
 
 @font-face {
-    font-family: 'League Spartan Regular';
-    src: url('Sources/Fonts/League_Spartan/LeagueSpartan-Regular.ttf') format('truetype')
+  font-family: "League Spartan Regular";
+  src: url("Sources/Fonts/League_Spartan/LeagueSpartan-Regular.ttf")
+    format("truetype");
 }
 
 *,
 *::before,
 *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 main,
 header {
-    max-width: 1440px;
-    overflow-x: clip;
-    margin: 0 auto;
+  max-width: 1440px;
+  overflow-x: clip;
+  margin: 0 auto;
 }
 
 body {
-    background-color: #070724;
-    background-image: url("Sources/Images/background-stars.svg");
+  background-color: #070724;
+  background-image: url("Sources/Images/background-stars.svg");
 }
 
 header {
-    display: flex;
-    background-color: #070724;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.5rem;
-    position: relative;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  background-color: #070724;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .title-menu {
-    color: #FFFFFF;
-    font-family: "Antonio Medium", "Arial";
-    letter-spacing: -0.065625rem;
-    font-size: 1.75rem;
+  color: #ffffff;
+  font-family: "Antonio Medium", "Arial";
+  letter-spacing: -0.065625rem;
+  font-size: 1.75rem;
 }
 
 .hamburger-button {
-    background-color: transparent;
-    border-color: transparent;
-    cursor: pointer;
-    transition: opacity 0.2s ease-in-out;
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
 }
 
 .hamburger-button.show {
-    opacity: 0.25;
+  opacity: 0.25;
 }
 
 .menu-items {
-    position: absolute;
-    display: none;
-    top: 100%;
-    left: 0;
-    right: 0;
-    padding: 1.5rem 0;
-    list-style-type: none;
-    background-color: #070724;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    transform: translate(100%, 0);
-    transition: transform 0.4s ease-in-out;
-    z-index: 1;
+  position: absolute;
+  display: none;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding: 1.5rem 0;
+  list-style-type: none;
+  background-color: #070724;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  transform: translate(100%, 0);
+  transition: transform 0.4s ease-in-out;
+  z-index: 1;
 }
 
 .menu-items.show {
-    transform: translate(0, 0);
+  transform: translate(0, 0);
 }
 
 .menu-items.appear {
-    display: block;
+  display: block;
 }
 
 .menu-item-button {
-    text-decoration: none;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.25rem 1.5rem;
-    color: white;
-    background-color: #070724;
-    border-color: transparent;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    transition: background-color 0.2s linear;
-    cursor: pointer;
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  color: white;
+  background-color: #070724;
+  border-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.2s linear;
+  cursor: pointer;
 }
 
 .menu-item-button:hover {
-    background-color: rgb(216,216,216,0.2);
+  background-color: rgb(216, 216, 216, 0.2);
 }
 
 .menu-planet-container {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .menu-planet-name {
-    font-family: "League Spartan Bold", "Arial";
-    font-size: 0.9375rem;
-    letter-spacing: 0.085rem;
-    padding-left: 1.5625rem;
-    text-transform: uppercase;
+  font-family: "League Spartan Bold", "Arial";
+  font-size: 0.9375rem;
+  letter-spacing: 0.085rem;
+  padding-left: 1.5625rem;
+  text-transform: uppercase;
 }
 
 .planet-info-menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 1.5rem;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .overview,
 .structure,
 .surface {
-    color: rgba(255,255,255,0.5);
-    display: inline-block;
-    position: relative;
-    background-color: transparent;
-    border-color: transparent;
-    cursor: pointer;
-    font-family: "League Spartan Regular", "Arial";
-    text-underline-offset: 1.25rem;
-    font-size: 0.75rem;
-    letter-spacing: 0.120625rem;
-    padding: 1.25rem 0;
-    transition: color 0.25s ease-in-out;
+  color: rgba(255, 255, 255, 0.5);
+  display: inline-block;
+  position: relative;
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  font-family: "League Spartan Regular", "Arial";
+  text-underline-offset: 1.25rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.120625rem;
+  padding: 1.25rem 0;
+  transition: color 0.25s ease-in-out;
 }
 
 .overview.active,
 .structure.active,
 .surface.active {
-    color: rgba(255,255,255,1);
+  color: rgba(255, 255, 255, 1);
 }
 
 .overview::after,
 .structure::after,
 .surface::after {
-    content: '';
+  content: "";
+  position: absolute;
+  transform: scaleX(0);
+  height: 4px;
+  right: 0;
+  top: 100%;
+  left: 0;
+  background-color: var(--after-bg-color);
+  transition: transform 0.25s ease-out;
+}
+
+.overview:hover::after,
+.structure:hover::after,
+.surface:hover::after,
+.overview:focus::after,
+.structure:focus::after,
+.surface:focus::after {
+  transform: scaleX(1);
+}
+
+.overview:focus-visible,
+.structure:focus-visible,
+.surface:focus-visible {
+  outline: none;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.planet-image {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  transition: opacity 0.3s linear;
+  height: 300px;
+}
+
+.planet-image svg {
+  transform: scale(0.385);
+}
+
+.planet-surface {
+  position: absolute;
+  top: 60%;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.planet-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+h1 {
+  color: white;
+  font-family: "Antonio Medium", "Arial";
+  font-weight: unset;
+  font-size: 2.5rem;
+  padding-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.planet-info-text {
+  color: white;
+  font-family: "League Spartan ExtraLight", "Arial";
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.planet-name,
+.planet-info-text,
+#rotation,
+#revolution,
+#radius,
+#temperature {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.planet-link {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.source-title,
+.wiki-link {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.75rem;
+}
+
+.source-title {
+  font-family: "League Spartan Regular", "Arial";
+}
+
+.wiki-link {
+  display: flex;
+  align-items: center;
+  font-family: "League Spartan Bold", "Arial";
+  transition: color 0.3s linear;
+}
+
+.wiki-link p {
+  padding: 0 0.25rem;
+}
+
+.wiki-link:hover {
+  color: white;
+}
+
+.wiki-link:hover > svg * {
+  opacity: 1;
+  transition: opacity 0.3s linear;
+}
+
+.spec-name {
+  font-family: "League Spartan Regular", "Arial";
+  letter-spacing: 0.045625rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.675rem;
+}
+
+.spec-value {
+  font-family: "Antonio Medium", "Arial";
+  letter-spacing: -0.046875rem;
+  color: rgba(255, 255, 255, 1);
+  font-size: 1.25rem;
+  text-transform: uppercase;
+}
+
+.planet-specs {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0 1.5rem;
+}
+
+.planet-spec {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1.5rem;
+}
+
+.planet-info-menu .info-number,
+.planet-info-menu .extra-text {
+  display: none;
+}
+
+@media only screen and (min-width: 650px) {
+  main {
+    display: grid;
+    grid-template: auto auto auto / 1fr 1fr;
+  }
+
+  .planet-image {
+    grid-column-start: span 2;
+    grid-row-start: 1;
+  }
+
+  .planet-specs {
+    grid-column-start: span 2;
+  }
+
+  .planet-info-menu {
+    flex-direction: column;
+    align-items: flex-end;
+    grid-row-start: 2;
+    grid-column-start: 2;
+    justify-content: space-around;
+    padding: 1.5rem 1.5rem;
+  }
+
+  .overview,
+  .structure,
+  .surface {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+    text-align: left;
+    padding: 1rem 1.25rem;
+    transition: background-color 0.25s ease-in-out;
+  }
+
+  .overview:hover,
+  .structure:hover,
+  .surface:hover,
+  .overview:focus,
+  .structure:focus,
+  .surface:focus {
+    background-color: var(--after-bg-color);
+  }
+
+  .overview::after,
+  .structure::after,
+  .surface::after {
+    display: none;
+  }
+
+  .planet-info {
+    align-items: flex-start;
+  }
+
+  .planet-link {
+    justify-content: left;
+    padding: 2rem;
+  }
+
+  .planet-info-text {
+    text-align: left;
+  }
+
+  .hamburger-button {
+    display: none;
+  }
+
+  header {
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 2rem 0rem;
+  }
+
+  .menu-items {
+    display: flex;
+    position: initial;
+    width: 100%;
+    transform: translate(0, 0);
+    justify-content: space-between;
+    border-top: none;
+    padding: 1rem 0 0;
+  }
+
+  .menu-planet-circle,
+  .menu-item-button svg {
+    display: none;
+  }
+
+  .menu-planet-name {
+    font-family: "League Spartan Regular", "Arial";
+    font-size: 0.6875rem;
+    letter-spacing: 0.0625rem;
+    padding: 0;
+  }
+
+  .menu-item-button {
+    color: rgba(255, 255, 255, 0.75);
+    padding: 1.5rem 0.5rem;
+    position: relative;
+    border-bottom: none;
+    transition: color 0.25s ease-in-out;
+  }
+
+  .menu-item-button:hover {
+    background-color: #070724;
+  }
+
+  .menu-item-button.active {
+    color: rgba(255, 255, 255, 1);
+  }
+
+  .menu-item-button::after {
+    content: "";
     position: absolute;
     transform: scaleX(0);
     height: 4px;
-    right:0;
-    top:100%;
+    right: 0;
+    top: 100%;
     left: 0;
     background-color: var(--after-bg-color);
     transition: transform 0.25s ease-out;
   }
 
-  .overview:hover::after,
-  .structure:hover::after,
-  .surface:hover::after,
-  .overview:focus::after,
-  .structure:focus::after,
-  .surface:focus::after {
+  .menu-item-button:hover::after,
+  .menu-item-button:focus::after {
     transform: scaleX(1);
   }
 
-  .overview:focus-visible,
-  .structure:focus-visible,
-  .surface:focus-visible {
+  .menu-item-button:focus-visible {
     outline: none;
-  }
-
-  main {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 2rem;
-  }
-
-  .planet-image {
-    display: flex;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    align-self: center;
-    transition: opacity 0.3s linear;
-    height: 300px;
-  }
-
-  .planet-image svg {
-    transform: scale(0.385);
-  }
-
-  .planet-surface {
-    position: absolute;
-    top: 60%;
-    transition: opacity 0.3s ease-in-out;
-  }
-
-  .planet-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0 2rem;
-  }
-
-  h1 {
-    color: white;
-    font-family: "Antonio Medium", "Arial";
-    font-weight: unset;
-    font-size: 2.5rem;
-    padding-bottom: 1rem;
-    text-transform: uppercase;
-  }
-
-  .planet-info-text {
-    color:white;
-    font-family: 'League Spartan ExtraLight', "Arial";
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-  }
-
-  .planet-name,
-  .planet-info-text,
-  #rotation,
-  #revolution,
-  #radius,
-  #temperature {
-    transition: opacity 0.3s ease-in-out;
-  }
-
-  .planet-link {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem 0;
-  }
-
-  .source-title,
-  .wiki-link {
-    color: rgba(255,255,255,0.5);
-    font-size: 0.75rem;
-  }
-
-  .source-title {
-    font-family: "League Spartan Regular", "Arial";
-  }
-
-  .wiki-link{
-    display: flex;
-    align-items: center;
-    font-family: "League Spartan Bold", "Arial";
-    transition: color 0.3s linear;
-  }
-
-  .wiki-link p {
-    padding: 0 0.25rem;
-  }
-
-  .wiki-link:hover {
-    color: white;
-  }
-
-  .wiki-link:hover > svg * {
-    opacity: 1;
-    transition: opacity 0.3s linear;
-  }
-
-  .spec-name {
-    font-family: "League Spartan Regular", "Arial";
-    letter-spacing: 0.045625rem;
-    color: rgba(255,255,255,0.5);
-    font-size: 0.675rem;
-  }
-
-  .spec-value {
-    font-family: "Antonio Medium", "Arial";
-    letter-spacing: -0.046875rem;
-    color: rgba(255,255,255,1);
-    font-size: 1.25rem;
-    text-transform: uppercase;
   }
 
   .planet-specs {
     display: grid;
-    gap: 0.5rem;
-    padding: 0 1.5rem;
+    grid-template: 1fr / 1fr 1fr 1fr 1fr;
+    gap: 0.6875rem;
   }
 
   .planet-spec {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid rgba(255,255,255,0.2);
-    padding: 0.5rem 1.5rem;
+    display: block;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1rem;
   }
 
-  .planet-info-menu .info-number,
+  .spec-value {
+    padding-top: 0.5rem;
+  }
+
+  .planet-info-menu .info-number {
+    display: initial;
+    padding-right: 1rem;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
   .planet-info-menu .extra-text {
-    display: none;
+    display: initial;
+    padding-right: 0;
   }
 
-  @media only screen and (min-width: 650px) {
-    main {
-      display: grid;
-      grid-template: auto auto auto / 1fr 1fr;
-    }
-
-    .planet-image {
-      grid-column-start: span 2;
-      grid-row-start: 1;
-    }
-
-    .planet-specs {
-      grid-column-start: span 2;
-    }
-
-    .planet-info-menu {
-      flex-direction: column;
-      align-items: flex-end;
-      grid-row-start: 2;
-      grid-column-start: 2;
-      justify-content: space-around;
-      padding: 1.5rem 1.5rem;
-    }
-
-    .overview,
-    .structure,
-    .surface {
-      border: 1px solid rgba(255,255,255,0.2);
-      width: 100%;
-      text-align: left;
-      padding: 1rem 1.25rem;
-      transition: background-color 0.25s ease-in-out;
-    }
-
-    .overview:hover,
-    .structure:hover,
-    .surface:hover,
-    .overview:focus,
-    .structure:focus,
-    .surface:focus {
-      background-color: var(--after-bg-color);
-    }
-
-    .overview::after,
-    .structure::after,
-    .surface::after {
-      display: none;
-    }
-
-    .planet-info {
-      align-items: flex-start;
-    }
-
-    .planet-link {
-      justify-content: left;
-      padding: 2rem;
-    }
-
-    .planet-info-text {
-      text-align: left;
-    }
-
-    .hamburger-button {
-      display: none;
-    }
-
-    header {
-      flex-direction: column;
-      justify-content: center;
-      padding: 2rem 2rem 0rem;
-    }
-
-    .menu-items {
-      display: flex;
-      position: initial;
-      width: 100%;
-      transform: translate(0, 0);
-      justify-content: space-between;
-      border-top: none;
-      padding: 1rem 0 0;
-    }
-
-    .menu-planet-circle,
-    .menu-item-button svg{
-      display: none;
-    }
-
-    .menu-planet-name {
-      font-family: "League Spartan Regular", "Arial";
-      font-size: 0.6875rem;
-      letter-spacing: 0.0625rem;
-      padding: 0;
-    }
-
-    .menu-item-button {
-      color: rgba(255,255,255,0.75);
-      padding: 1.5rem 0.5rem;
-      position: relative;
-      border-bottom: none;
-      transition: color 0.25s ease-in-out;
-    }
-
-    .menu-item-button:hover {
-      background-color: #070724;
-    }
-
-    .menu-item-button.active {
-      color: rgba(255,255,255,1);
-    }
-
-    .menu-item-button::after {
-      content: '';
-      position: absolute;
-      transform: scaleX(0);
-      height: 4px;
-      right:0;
-      top:100%;
-      left: 0;
-      background-color: var(--after-bg-color);
-      transition: transform 0.25s ease-out;
-    }
-
-    .menu-item-button:hover::after,
-    .menu-item-button:focus::after {
-      transform: scaleX(1);
-    }
-
-    .menu-item-button:focus-visible {
-      outline: none;
-    }
-
-    .planet-specs {
-      display: grid;
-      grid-template: 1fr / 1fr 1fr 1fr 1fr;
-      gap: 0.6875rem;
-    }
-
-    .planet-spec {
-      display: block;
-      border: 1px solid rgba(255,255,255,0.2);
-      padding: 1rem;
-    }
-
-    .spec-value {
-      padding-top: 0.5rem;
-    }
-
-    .planet-info-menu .info-number{
-      display: initial;
-      padding-right: 1rem;
-      color: rgba(255,255,255,0.5);
-    }
-
-    .planet-info-menu .extra-text {
-      display: initial;
-      padding-right: 0;
-    }
-
-    .overview,
-    .structure,
-    .surface {
-      color: white;
-    }
-
-    .planet-image {
-      height: 460px;
-    }
-  
-    .planet-image svg {
-      transform: scale(0.634);
-    }
+  .overview,
+  .structure,
+  .surface {
+    color: white;
   }
 
-  @media only screen and (min-width: 1300px) {
-    .planet-image {
-      height: 754px;
-    }
-  
-    .planet-image svg {
-      transform: scale(1);
-    }
-
-    .planet-image {
-      grid-row-start: 1;
-      grid-row-end: 3;
-      grid-column-start: 1;
-      grid-column-end:2;
-    }
-
-    .planet-specs {
-      padding: 0;
-      gap: 1rem;
-    }
-
-    main {
-      grid-template: auto auto auto / 2fr 1fr;
-      padding: 0 10rem;
-    }
-
-    .spec-name {
-      font-size: 1rem;
-    }
-
-    .spec-value {
-      font-size: 2.5rem;
-    }
-
-    header {
-      flex-direction: row;
-      padding: 0 2rem;
-      justify-content: space-between;
-    }
-
-    .menu-items {
-      width: initial;
-      gap: 1rem;
-      padding-top: 0;
-    }
-
-    .menu-item-button {
-      border: none;
-    }
-
-    .menu-item-button::after {
-      top: 0;
-    }
-
-    .planet-name {
-      font-size: 5rem;
-    }
-
-    .planet-info-menu {
-      border-bottom: none;
-      justify-content: flex-start;
-      gap: 1rem;
-    }
-
-    .planet-info-container{
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-    }
+  .planet-image {
+    height: 460px;
   }
 
+  .planet-image svg {
+    transform: scale(0.634);
+  }
+}
 
+@media only screen and (min-width: 1300px) {
+  .planet-image {
+    height: 754px;
+  }
 
+  .planet-image svg {
+    transform: scale(1);
+  }
+
+  .planet-image {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }
+
+  .planet-specs {
+    padding: 0;
+    gap: 1rem;
+  }
+
+  main {
+    grid-template: auto auto auto / 2fr 1fr;
+    padding: 0 10rem;
+  }
+
+  .spec-name {
+    font-size: 1rem;
+  }
+
+  .spec-value {
+    font-size: 2.5rem;
+  }
+
+  header {
+    flex-direction: row;
+    padding: 0 2rem;
+    justify-content: space-between;
+  }
+
+  .menu-items {
+    width: initial;
+    gap: 1rem;
+    padding-top: 0;
+  }
+
+  .menu-item-button {
+    border: none;
+  }
+
+  .menu-item-button::after {
+    top: 0;
+  }
+
+  .planet-name {
+    font-size: 5rem;
+  }
+
+  .planet-info-menu {
+    border-bottom: none;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+
+  .planet-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+}
