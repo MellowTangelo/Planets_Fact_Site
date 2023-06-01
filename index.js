@@ -65,7 +65,6 @@ fetchData().then((data) => {
   const wikiLink = document.querySelector(".wiki-link");
   const planetButtons = document.querySelectorAll(".menu-item-button");
   const planetName = document.querySelector(".planet-name");
-  const planetImage = document.querySelector(".planet-image");
   const planetRotation = document.querySelector("#rotation");
   const planeteRevolution = document.querySelector("#revolution");
   const planetRadius = document.querySelector("#radius");
@@ -217,7 +216,7 @@ fetchData().then((data) => {
   function switchPlanetInfo(index) {
     if (currentPlanetIndex !== index) {
       planetName.style.opacity = 0;
-      planetImage.style.opacity = 0;
+      imageContainer.style.opacity = 0;
       planetRotation.style.opacity = 0;
       planeteRevolution.style.opacity = 0;
       planetRadius.style.opacity = 0;
@@ -270,7 +269,7 @@ fetchData().then((data) => {
         }
 
         planetName.style.opacity = 1;
-        planetImage.style.opacity = 1;
+        imageContainer.style.opacity = 1;
         planetRotation.style.opacity = 1;
         planeteRevolution.style.opacity = 1;
         planetRadius.style.opacity = 1;
